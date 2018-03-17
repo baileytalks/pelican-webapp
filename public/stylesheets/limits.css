@@ -93,3 +93,18 @@ body {
   font-size: 12px;
   color: #777;
 }
+
+.content {
+  display: none;
+}
+.preload {
+    width:100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.glyph-icon svg {
+  width:10px;
+}

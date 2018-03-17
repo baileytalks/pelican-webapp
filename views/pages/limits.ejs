@@ -15,26 +15,33 @@
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/limits.css" rel="stylesheet">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
   </head>
 
   <body>
     <div class="container">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-body">
+          <p class="card-text">We've synced your Santander account successfully<img class="glyph-icon" src="/images/si-glyph-checked.svg"/></p>
+        </div>
+      </div>
       <h1>Set your limits</h1>
-      <p>We've taken a look at your bank statement from last month, and here are our suggestions based on that data:</p>
+      <p>Based on your previous bank balance data, we suggest you use these limits – but it's totally up to you.</p>
       <table class="table">
         <tbody>
           <tr>
-            <th scope="row" style="color: green">*</th>
-            <td>Over this amount is good</td>
+            <td style="text-align: right">Over this amount we'll text you</td>
+            <td><i class="em em-green_heart"></i></td>
             <td><span>£</span><input type="number" min="0.01" step="0.01" placeholder="890"></input></td>
           </tr>
           <tr>
-            <th scope="row" style="color: gold">*</th>
-            <td colspan="2">Between <% %> and <% %> is OK</td>
+            <td style="text-align: right">Between <b style="color: grey">£890<% %></b> and <b style="color: grey">£211<% %></b> and we'll text you</i></i></td>
+            <td colspan="2"><i class="em em-large_orange_diamond"></td>
           </tr>
           <tr>
-            <th scope="row" style="color: red">*</th>
-            <td>Under this amount is bad</td>
+            <td style="text-align: right">Under this amount we'll text you</td>
+            <td><i class="em em-red_circle"></i></td>
             <td><span>£</span><input type="number" min="0.01" step="0.01" placeholder="211"></input></td>
           </tr>
         </tbody>
