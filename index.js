@@ -12,3 +12,7 @@ app.listen(3000, function () {
 app.get('/', function (req, res) {
   res.render('pages/index');
 })
+
+app.get('/limits', function (req, res) {
+  res.render('pages/limits')
+});

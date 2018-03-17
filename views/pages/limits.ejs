@@ -1,0 +1,45 @@
+<meta charset="UTF-8">
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <title>Pelican | Taking the fear out of checking your bank balance</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/limits.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Set your limits</h1>
+      <p>We've taken a look at your bank statement from last month, and here are our suggestions based on that data:</p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row" style="color: green">*</th>
+            <td>Over this amount is good</td>
+            <td><span>£</span><input type="number" min="0.01" step="0.01" placeholder="890"></input></td>
+          </tr>
+          <tr>
+            <th scope="row" style="color: gold">*</th>
+            <td colspan="2">Between <% %> and <% %> is OK</td>
+          </tr>
+          <tr>
+            <th scope="row" style="color: red">*</th>
+            <td>Under this amount is bad</td>
+            <td><span>£</span><input type="number" min="0.01" step="0.01" placeholder="211"></input></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary">Update</button>
+    </div>
+  </body>
+</html>
