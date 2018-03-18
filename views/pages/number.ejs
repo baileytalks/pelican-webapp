@@ -1,0 +1,48 @@
+<meta charset="UTF-8">
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/images/favicon.ico">
+
+  <title>Pelican | Taking the fear out of checking your bank balance</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="/stylesheets/limits.css" rel="stylesheet">
+  
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="alert alert-success alert-dismissible test" role="alert">
+      <strong>Success!</strong> We've updated your settings
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h1>Set your number</h1>
+    <p>We found this number linked to your account. P</p>
+    <!-- <p>Based on your previous bank balance data, we suggest you use these limits – but it's totally up to you.</p> -->
+    <input id="phoneNum" type="text" style="width:100%"></input>
+    
+    <button style="margin-top:15px" type="button" class="btn btn-primary" id="btn-update-limits">Update</button>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var defaults = localStorage.getItem("dataObject");
+    $("#phoneNum").val('+44763133487');
+  });
+</script>
+
+</html>

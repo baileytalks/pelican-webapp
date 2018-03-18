@@ -20,3 +20,7 @@ app.get('/limits', function (req, res) {
 app.get('/sign-in', function (req, res) {
   res.render('pages/sign-in')
 });
+
+app.get('/number', function (req, res) {
+  res.render('pages/number')
+});
