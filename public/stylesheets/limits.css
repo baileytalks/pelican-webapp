@@ -1,7 +1,10 @@
-span{
-  position:relative;
-  margin-right:-20px
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+.currency {
+  position: relative;
+  margin-right: -20px;
 }
+
 input[type='number']{
   padding-left:20px;
   text-align:left;
@@ -14,6 +17,7 @@ input[type='number']{
 html,
 body {
   height: 100%;
+  font-family: 'Nunito', sans-serif;
 }
 
 body {
@@ -94,17 +98,7 @@ body {
   color: #777;
 }
 
-.content {
-  display: none;
-}
-.preload {
-    width:100px;
-    height: 100px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-}
-
-.glyph-icon svg {
-  width:10px;
+.amount {
+  font-weight: bold;
+  color: #ccc;
 }

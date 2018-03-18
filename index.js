@@ -16,3 +16,7 @@ app.get('/', function (req, res) {
 app.get('/limits', function (req, res) {
   res.render('pages/limits')
 });
+
+app.get('/sign-in', function (req, res) {
+  res.render('pages/sign-in')
+});

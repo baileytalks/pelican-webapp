@@ -16,37 +16,81 @@
     <!-- Custom styles for this template -->
     <link href="/stylesheets/limits.css" rel="stylesheet">
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-
   </head>
 
   <body>
     <div class="container">
-      <div class="card text-white bg-success mb-3">
-        <div class="card-body">
-          <p class="card-text">We've synced your Santander account successfully<img class="glyph-icon" src="/images/si-glyph-checked.svg"/></p>
-        </div>
-      </div>
+      <div class="alert alert-success alert-dismissible test" role="alert">
+        <strong>Success!</strong> We've linked up to your Santander current account
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
       <h1>Set your limits</h1>
       <p>Based on your previous bank balance data, we suggest you use these limits – but it's totally up to you.</p>
       <table class="table">
         <tbody>
           <tr>
-            <td style="text-align: right">Over this amount we'll text you</td>
+            <td colspan="5">Over this amount we'll text you</td>
             <td><i class="em em-green_heart"></i></td>
-            <td><span>£</span><input type="number" min="0.01" step="0.01" placeholder="890"></input></td>
+            <td><span class="currency">£</span><input type="number" min="0.01" step="0.01" id="high"></input></td>
           </tr>
           <tr>
-            <td style="text-align: right">Between <b style="color: grey">£890<% %></b> and <b style="color: grey">£211<% %></b> and we'll text you</i></i></td>
-            <td colspan="2"><i class="em em-large_orange_diamond"></td>
+            <td width="3%">Between</i></i></td>
+            <td width="3%"><span class="amount">£</span><span class="amount" id="low-amount"></span></td>
+            <td width="3%"> and </td>
+            <td width="3%"><span class="amount">£</span><span class="amount" id="high-amount"></span></td>
+            <td width="15%"> we'll text you</td>
+            <td><i class="em em-large_orange_diamond"></td>
+            <td></td>
           </tr>
           <tr>
-            <td style="text-align: right">Under this amount we'll text you</td>
+            <td colspan="5">Under this amount we'll text you</td>
             <td><i class="em em-red_circle"></i></td>
-            <td><span>£</span><input type="number" min="0.01" step="0.01" placeholder="211"></input></td>
+            <td><span class="currency">£</span><input type="number" min="0.01" step="0.01" id="low"></input></td>
           </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary">Update</button>
+      <button type="button" class="btn btn-primary" id="btn-update-limits">Update</button>
     </div>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var defaults = localStorage.getItem("dataObject");
+      var parsedDefaults = JSON.parse(defaults);
+      document.getElementById('low').value = parsedDefaults.high;
+      document.getElementById('high').value = parsedDefaults.low;
+      $('#high-amount').text(parsedDefaults.high);
+      $('#low-amount').text(parsedDefaults.low);
+
+      $("#btn-update-limits").click(function() {
+        let high = $("#high").val();
+        let low = $("#low").val();
+
+        $.ajax({
+          url: 'http://167.99.82.88:3000/limits',
+          type: "POST",
+          data: JSON.stringify({ low, high }),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function () {
+            console.log('success!')
+          }
+        });
+      });
+
+      $("#high").on("change keyup", function () {
+        $('#high-amount').text($(this).val());
+      });
+
+      $("#low").on("change keyup", function () {
+        $('#low-amount').text($(this).val());
+      });
+
+      $('.close').click(function(){
+        $(".test").css("display", "none");
+      });
+    });
+</script>
 </html>
