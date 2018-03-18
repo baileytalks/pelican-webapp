@@ -22,56 +22,25 @@
 
 <body>
   <div class="container">
-    <div class="alert alert-success alert-dismissible test" role="alert">
-      <strong>Success!</strong> We've linked your Santander current account
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <h2>Your traffic light settings</h2>
-    <p style="padding-bottom: 10px">Based on last month's data, we suggest you use these settings for green, amber and red – but it's totally up to you.</p>
+    <h2>Your phone number and time of day</h2>
+    <p>We've set your default phone number and time of day to receive a Pelican text message, but you can change it if you want to.</p>
     <table class="table">
       <tbody>
         <tr>
-          <td colspan="3">Over this amount we'll text you</td>
+          <td colspan="3">Phone number</td>
+          <td><input value="07123 788766"></input></td>
+        </tr>
+        <tr>
+          <td colspan="3">Time of day</td>
           <td>
-            <i class="em em-green_heart"></i>
-          </td>
-        </tr>
-        <tr>
-          <td style="border-top: none;">
-            <span class="currency">£</span>
-            <input type="number" min="0.01" step="0.01" id="high"></input>
-          </td>
-        </tr>
-        <tr>
-          <td width="3%" colspan="4">Between
-          </td>
-        </tr>
-        <tr>
-          <td width="3%" colspan="3" style="border-top: none;">
-            <span class="amount">£</span>
-            <span class="amount" id="low-amount"></span>
-            and
-            <span class="amount">£</span>
-            <span class="amount" id="high-amount"></span>
-            we'll text you
-          </td>
-          <td style="border-top: none;">
-            <i class="em em-large_orange_diamond">
-          </td>
-        </tr>
-        <tr><td style="border-top: none;"></td></tr>
-        <tr>
-          <td colspan="3">Under this amount we'll text you</td>
-          <td>
-            <i class="em em-red_circle"></i>
-          </td>
-        </tr>
-        <tr>
-          <td style="border-top: none;">
-            <span class="currency">£</span>
-            <input type="number" min="0.01" step="0.01" id="low"></input>
+            <form>
+              <select name="cars">
+                <option value="">7.30am</option>
+                <option value="">10.30am</option>
+                <option value="">2.30pm</option>
+                <option value="">8.30pm</option>
+              </select>
+            </form>
           </td>
         </tr>
       </tbody>

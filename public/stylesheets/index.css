@@ -12,16 +12,6 @@ body {
 }
 
 body {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  padding-bottom: 40px;
   background-color: #EFF6EE;
   overflow: hidden;
 }
@@ -92,6 +82,8 @@ body {
 .header {
   background-color: #EC0000;
   color: #fff;
+  padding-bottom: 80px;
+  padding-top: 200px;
 }
 
 .btn-primary {
