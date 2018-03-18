@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" href="/images/favicon.ico">
 
-  <title>Pelican | Taking the fear out of checking your bank balance</title>
+  <title>Pelican | Take the anxiety out of checking your bank balance</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -23,13 +23,13 @@
 <body>
   <div class="container">
     <div class="alert alert-success alert-dismissible test" role="alert">
-      <strong>Success!</strong> We've linked up to your Santander current account
+      <strong>Success!</strong> We've linked your Santander current account
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <h1>Set your limits</h1>
-    <p>Based on your previous bank balance data, we suggest you use these limits – but it's totally up to you.</p>
+    <h2>Your traffic light settings</h2>
+    <p style="padding-bottom: 10px">Based on last month's data, we suggest you use these settings for green, amber and red – but it's totally up to you.</p>
     <table class="table">
       <tbody>
         <tr>
@@ -53,7 +53,6 @@
             <span class="amount">£</span>
             <span class="amount" id="low-amount"></span>
             and
-
             <span class="amount">£</span>
             <span class="amount" id="high-amount"></span>
             we'll text you
@@ -74,13 +73,12 @@
         <tr>
           <td style="border-top: none;">
             <span class="currency">£</span>
-
             <input type="number" min="0.01" step="0.01" id="low"></input>
           </td>
         </tr>
       </tbody>
     </table>
-    <button type="button" class="btn btn-primary" id="btn-update-limits">Update</button>
+    <button type="button" class="btn btn-primary" id="btn-update-limits">Save settings</button>
   </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -90,8 +88,7 @@
     var parsedDefaults = JSON.parse(defaults);
     document.getElementById('low').value = parsedDefaults.high;
     document.getElementById('high').value = parsedDefaults.low;
-    $('#high-amount').text(parsedDefaults.high);
-    $('#low-amount').text(parsedDefaults.low);
+
 
     $.ajax({
       url: 'http://167.99.82.88:3000/limits',
@@ -99,16 +96,16 @@
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (resD) {
-        console.log(resD)
         $("#high").val(resD.limits.high);
         $("#low").val(resD.limits.low);
+        $('#high-amount').text(resD.limits.high);
+        $('#low-amount').text(resD.limits.low);
       }
     });
 
     $("#btn-update-limits").click(function () {
       let high = $("#high").val();
       let low = $("#low").val();
-
       $.ajax({
         url: 'http://167.99.82.88:3000/limits',
         type: "POST",
@@ -117,9 +114,13 @@
         dataType: "json",
         success: function () {
           console.log('success!')
-          window.location.replace('http://' + location.host + '/number');
+          debugger;
         }
       });
+      setTimeout(() => {
+        let _window = window; 
+        _window.location.replace('http://' + _window.location.host + '/phone-time');
+      })
     });
 
     $("#high").on("change keyup", function () {

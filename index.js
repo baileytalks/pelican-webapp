@@ -24,3 +24,7 @@ app.get('/sign-in', function (req, res) {
 app.get('/number', function (req, res) {
   res.render('pages/number')
 });
+
+app.get('/phone-time', function (req, res) {
+  res.render('pages/phone-time')
+});

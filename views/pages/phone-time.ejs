@@ -1,0 +1,103 @@
+<meta charset="UTF-8">
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/images/favicon.ico">
+
+  <title>Pelican | Take the anxiety out of checking your bank balance</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="/stylesheets/limits.css" rel="stylesheet">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Your phone number and time of day</h2>
+    <p>We've set your default phone number and time of day to receive a Pelican text message, but you can change it if you want to.</p>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td colspan="3">Phone number</td>
+          <td><input value="07123 788766"></input></td>
+        </tr>
+        <tr>
+          <td colspan="3">Time of day</td>
+          <td>
+            <form>
+              <select name="cars">
+                <option value="">7.30am</option>
+                <option value="">10.30am</option>
+                <option value="">2.30pm</option>
+                <option value="">8.30pm</option>
+              </select>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" id="btn-update-limits">Save settings</button>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var defaults = localStorage.getItem("dataObject");
+    var parsedDefaults = JSON.parse(defaults);
+    document.getElementById('low').value = parsedDefaults.high;
+    document.getElementById('high').value = parsedDefaults.low;
+    $('#high-amount').text(parsedDefaults.high);
+    $('#low-amount').text(parsedDefaults.low);
+
+    $.ajax({
+        url: 'http://167.99.82.88:3000/limits',
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (resD) {
+          console.log(resD)
+          $("#high").val(resD.limits.high);
+          $("#low").val(resD.limits.low);
+        }
+      });
+
+    $("#btn-update-limits").click(function () {
+      let high = $("#high").val();
+      let low = $("#low").val();
+
+      $.ajax({
+        url: 'http://167.99.82.88:3000/limits',
+        type: "POST",
+        data: JSON.stringify({ low, high }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function () {
+          console.log('success!')
+        }
+      });
+    });
+
+    $("#high").on("change keyup", function () {
+      $('#high-amount').text($(this).val());
+    });
+
+    $("#low").on("change keyup", function () {
+      $('#low-amount').text($(this).val());
+    });
+
+    $('.close').click(function () {
+      $(".test").css("display", "none");
+    });
+  });
+</script>
+
+</html>
