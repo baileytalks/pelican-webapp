@@ -52,7 +52,7 @@
           <td width="3%" colspan="3" style="border-top: none;">
             <span class="amount">£</span>
             <span class="amount" id="low-amount"></span>
-            and 
+            and
 
             <span class="amount">£</span>
             <span class="amount" id="high-amount"></span>
@@ -62,7 +62,9 @@
             <i class="em em-large_orange_diamond">
           </td>
         </tr>
-        <tr><td style="border-top: none;"></td></tr>
+        <tr>
+          <td style="border-top: none;"></td>
+        </tr>
         <tr>
           <td colspan="3">Under this amount we'll text you</td>
           <td>
@@ -92,16 +94,16 @@
     $('#low-amount').text(parsedDefaults.low);
 
     $.ajax({
-        url: 'http://167.99.82.88:3000/limits',
-        type: "GET",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (resD) {
-          console.log(resD)
-          $("#high").val(resD.limits.high);
-          $("#low").val(resD.limits.low);
-        }
-      });
+      url: 'http://167.99.82.88:3000/limits',
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (resD) {
+        console.log(resD)
+        $("#high").val(resD.limits.high);
+        $("#low").val(resD.limits.low);
+      }
+    });
 
     $("#btn-update-limits").click(function () {
       let high = $("#high").val();
@@ -115,6 +117,7 @@
         dataType: "json",
         success: function () {
           console.log('success!')
+          window.location.replace('http://' + location.host + '/number');
         }
       });
     });
